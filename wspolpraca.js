@@ -55,3 +55,18 @@ document.getElementById('brief-form').addEventListener('submit', e => {
   const temat = `Brief${f.auto.value.trim() ? ' — ' + f.auto.value.trim() : ''}`;
   location.href = `mailto:anfotograf.info@gmail.com?subject=${encodeURIComponent(temat)}&body=${encodeURIComponent(linie.join('\n'))}`;
 });
+
+// krok po kroku: strzałki przewijają karty
+const kroki = document.getElementById('kroki');
+const kWstecz = document.getElementById('krokiWstecz');
+const kDalej = document.getElementById('krokiDalej');
+const krokSzer = () => kroki.querySelector('.krokk').offsetWidth + 18;
+kWstecz.addEventListener('click', () => kroki.scrollBy({ left: -krokSzer(), behavior: 'smooth' }));
+kDalej.addEventListener('click', () => kroki.scrollBy({ left: krokSzer(), behavior: 'smooth' }));
+const krokiStan = () => {
+  kWstecz.disabled = kroki.scrollLeft < 4;
+  kDalej.disabled = kroki.scrollLeft > kroki.scrollWidth - kroki.clientWidth - 4;
+};
+kroki.addEventListener('scroll', krokiStan, { passive: true });
+addEventListener('resize', krokiStan);
+krokiStan();

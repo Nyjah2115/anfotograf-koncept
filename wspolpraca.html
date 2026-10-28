@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=11">
+<link rel="stylesheet" href="style.css?v=14">
 </head>
 <body class="podstrona">
 
@@ -115,20 +115,47 @@
 
 <!-- ===== KROK PO KROKU ===== -->
 <section class="sekcja" id="przebieg">
-  <div class="wrap przebieg">
-    <div class="przebieg__lewo">
-      <p class="licznik reveal">003 <span>/ 005</span></p>
-      <h2 class="tytul reveal">Krok<br><span class="szary">po kroku</span></h2>
-      <p class="wstep reveal">Bez niespodzianek: przed sesją wiesz, co dostaniesz, ile to kosztuje i&nbsp;kiedy będą gotowe pliki.</p>
-      <figure class="przebieg__foto chrom-ramka reveal"><img src="img/k-urus_1.jpg" alt="Lamborghini Urus w ruchu w centrum miasta" loading="lazy"></figure>
-    </div>
-    <ol class="os">
-      <li class="os__krok reveal"><span class="os__nr">01</span><div><h3>Wiadomość i&nbsp;brief</h3><p>Piszesz, jakie to auto, czego potrzebujesz i&nbsp;gdzie materiał ma trafić. Wystarczy formularz na dole strony albo DM na Instagramie.</p></div></li>
-      <li class="os__krok reveal"><span class="os__nr">02</span><div><h3>Wycena i&nbsp;zakres</h3><p>Odpisuję z&nbsp;propozycją: liczba zdjęć, rolki, formaty i&nbsp;cena. Zakres ustalamy, zanim cokolwiek zarezerwujesz.</p></div></li>
-      <li class="os__krok reveal"><span class="os__nr">03</span><div><h3>Termin, lokacja i&nbsp;światło</h3><p>Dobieram miejsce i&nbsp;porę dnia pod charakter auta: miasto nocą, beton, plener albo studio.</p></div></li>
-      <li class="os__krok reveal"><span class="os__nr">04</span><div><h3>Dzień zdjęciowy</h3><p>Zdjęcia, rolling shots i&nbsp;nagrania do rolek robię podczas jednej sesji. Bez drugiej ekipy.</p></div></li>
-      <li class="os__krok reveal"><span class="os__nr">05</span><div><h3>Obróbka i&nbsp;oddanie</h3><p>Kolor, montaż i&nbsp;pliki w&nbsp;formatach pod każdy kanał. Termin oddania ustalamy już przy wycenie.</p></div></li>
-    </ol>
+  <div class="wrap">
+    <header class="naglowek naglowek--rzad">
+      <div>
+        <p class="licznik reveal">003 <span>/ 005</span></p>
+        <h2 class="tytul reveal">Krok<br><span class="szary">po kroku</span></h2>
+      </div>
+      <div class="naglowek__prawo">
+        <p class="wstep reveal">Bez niespodzianek: przed sesją wiesz, co dostaniesz, ile to kosztuje i&nbsp;kiedy będą gotowe pliki.</p>
+        <div class="strzalki reveal">
+          <button class="strzalka" type="button" id="krokiWstecz" aria-label="Poprzedni krok"><svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5"/></svg></button>
+          <button class="strzalka" type="button" id="krokiDalej" aria-label="Następny krok"><svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg></button>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="tasma kroki-tasma" id="kroki">
+    <article class="krokk">
+      <img src="img/k-roma_2.jpg" alt="Ferrari Roma, felga o zachodzie słońca" loading="lazy">
+      <span class="krokk__nr" aria-hidden="true">01</span>
+      <div class="krokk__opis"><h3>Wiadomość i&nbsp;brief</h3><p>Piszesz, jakie to auto i&nbsp;gdzie materiał ma trafić.</p></div>
+    </article>
+    <article class="krokk">
+      <img src="img/k-huracan_1.jpg" alt="Tylne światła Lamborghini Huracán EVO" loading="lazy">
+      <span class="krokk__nr" aria-hidden="true">02</span>
+      <div class="krokk__opis"><h3>Wycena i&nbsp;zakres</h3><p>Liczba zdjęć, rolki, formaty i&nbsp;cena, zanim cokolwiek zarezerwujesz.</p></div>
+    </article>
+    <article class="krokk">
+      <img src="img/k-temerario_0.jpg" alt="Lamborghini Temerario przed budynkiem" loading="lazy">
+      <span class="krokk__nr" aria-hidden="true">03</span>
+      <div class="krokk__opis"><h3>Lokacja i&nbsp;światło</h3><p>Miejsce i&nbsp;pora dnia dobrane pod charakter auta.</p></div>
+    </article>
+    <article class="krokk">
+      <img src="img/k-urus_1.jpg" alt="Lamborghini Urus w ruchu w centrum miasta" loading="lazy">
+      <span class="krokk__nr" aria-hidden="true">04</span>
+      <div class="krokk__opis"><h3>Dzień zdjęciowy</h3><p>Zdjęcia, rolling shots i&nbsp;rolki podczas jednej sesji.</p></div>
+    </article>
+    <article class="krokk">
+      <img src="img/k-db12_1.jpg" alt="Felga Aston Martina DB12 z bliska" loading="lazy">
+      <span class="krokk__nr" aria-hidden="true">05</span>
+      <div class="krokk__opis"><h3>Obróbka i&nbsp;oddanie</h3><p>Kolor, montaż i&nbsp;gotowe pliki pod każdy kanał.</p></div>
+    </article>
   </div>
 </section>
 
@@ -138,36 +165,27 @@
     <header class="naglowek naglowek--rzad">
       <div>
         <p class="licznik reveal">004 <span>/ 005</span></p>
-        <h2 class="tytul reveal">Co<br><span class="szary">dostajesz</span></h2>
+        <h2 class="tytul reveal">Jedno ujęcie<br><span class="szary">każdy format</span></h2>
       </div>
-      <p class="wstep naglowek__prawo reveal">Gotowe pliki, bez przycinania na własną rękę. Każdy format od razu pod konkretne miejsce.</p>
+      <p class="wstep naglowek__prawo reveal">Każdy kadr przycinam sam, pod konkretne miejsce. Dostajesz gotowe pliki, bez kombinowania w&nbsp;edytorze.</p>
     </header>
-    <ul class="pliki">
-      <li class="plik reveal"><span class="plik__format">JPG</span><h3>Zdjęcia w&nbsp;pełnej rozdzielczości</h3><p>Do druku, katalogu i&nbsp;na stronę salonu.</p></li>
-      <li class="plik reveal"><span class="plik__format">4:5</span><h3>Kadry pod Instagram</h3><p>Posty i&nbsp;karuzele bez ucinania auta.</p></li>
-      <li class="plik reveal"><span class="plik__format">9:16</span><h3>Rolki i&nbsp;relacje</h3><p>Pionowe wideo z&nbsp;muzyką i&nbsp;napisami.</p></li>
-      <li class="plik reveal"><span class="plik__format">16:9</span><h3>Wersje poziome</h3><p>Na stronę, baner i&nbsp;YouTube.</p></li>
-      <li class="plik reveal"><span class="plik__format">TEL</span><h3>Tapety na telefon</h3><p>Kadry przycięte pod ekran telefonu.</p></li>
-    </ul>
-
-    <div class="pytania">
-      <h3 class="pytania__tytul reveal">Częste pytania</h3>
-      <details class="pytanie reveal">
-        <summary>Ile kosztuje sesja?</summary>
-        <p>Cena zależy od zakresu: liczby zdjęć, rolek, lokacji i&nbsp;dojazdu. Po briefie dostajesz konkretną wycenę, zanim zarezerwujesz termin.</p>
-      </details>
-      <details class="pytanie reveal">
-        <summary>Gdzie odbywają się sesje?</summary>
-        <p>Głównie w&nbsp;Warszawie, ale dojeżdżam na sesje i&nbsp;wydarzenia w&nbsp;całej Polsce. Lokację dobieramy pod auto.</p>
-      </details>
-      <details class="pytanie reveal">
-        <summary>Czy robisz też same rolki, bez zdjęć?</summary>
-        <p>Tak. Możesz zamówić tylko zdjęcia, tylko wideo albo oba naraz z&nbsp;jednego dnia zdjęciowego.</p>
-      </details>
-      <details class="pytanie reveal">
-        <summary>Jak przygotować auto?</summary>
-        <p>Umyte auto i&nbsp;pełny bak wystarczą. Resztę, czyli lokację, światło i&nbsp;plan ujęć, biorę na siebie.</p>
-      </details>
+    <div class="formaty">
+      <figure class="format reveal" style="--ar:16/9;flex-grow:1.778">
+        <span class="format__ramka"><img src="img/db12_0.jpg" alt="To samo zdjęcie Aston Martina DB12 w formacie 16:9" style="object-position:50% 58%" loading="lazy"></span>
+        <figcaption><b>16:9</b><span>Strona, baner i&nbsp;YouTube</span></figcaption>
+      </figure>
+      <figure class="format reveal" style="--ar:3/2;flex-grow:1.5">
+        <span class="format__ramka"><img src="img/db12_0.jpg" alt="To samo zdjęcie Aston Martina DB12 w formacie 3:2" style="object-position:50% 56%" loading="lazy"></span>
+        <figcaption><b>3:2</b><span>Druk i&nbsp;katalog, pełna rozdzielczość</span></figcaption>
+      </figure>
+      <figure class="format reveal" style="--ar:4/5;flex-grow:0.8">
+        <span class="format__ramka"><img src="img/db12_0.jpg" alt="To samo zdjęcie Aston Martina DB12 w formacie 4:5" style="object-position:50% 50%" loading="lazy"></span>
+        <figcaption><b>4:5</b><span>Posty i&nbsp;karuzele na Instagramie</span></figcaption>
+      </figure>
+      <figure class="format reveal" style="--ar:9/16;flex-grow:0.5625">
+        <span class="format__ramka"><img src="img/db12_0.jpg" alt="To samo zdjęcie Aston Martina DB12 w formacie 9:16" style="object-position:46% 50%" loading="lazy"></span>
+        <figcaption><b>9:16</b><span>Rolki, relacje i&nbsp;tapety</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -218,6 +236,6 @@
   </div>
 </footer>
 
-<script src="wspolpraca.js?v=2"></script>
+<script src="wspolpraca.js?v=3"></script>
 </body>
 </html>
