@@ -204,10 +204,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 
 /* ---------- proces ---------- */
 .proces{padding-top:clamp(120px,15vw,200px)}
-.proces__scena{position:relative;height:clamp(520px,80vh,860px);overflow:hidden}
-.proces__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;filter:var(--bw) brightness(.75)}
-.proces__scena::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,rgba(11,11,11,.4) 45%,rgba(11,11,11,.55) 100%)}
-.proces__napis{position:absolute;z-index:2;left:0;right:0;bottom:clamp(30px,5vw,60px)}
+.proces__scena{position:relative}
 .proces__napis .etykieta{margin-bottom:22px}
 .proces__h2{display:flex;flex-direction:column;font-weight:700;font-size:clamp(42px,10.4vw,186px);line-height:.86;letter-spacing:-.02em;text-transform:uppercase}
 .proces__h2 span:first-child{color:transparent;-webkit-text-stroke:1.5px rgba(242,242,242,.75)}
