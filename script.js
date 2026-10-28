@@ -1,14 +1,38 @@
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ---------- hero: rolka Lotec C1000 w tle, pierścień DALEJ pokazuje postęp filmu ----------
-const heroWideo = document.getElementById('heroWideo');
+// ---------- hero: rolki Arka grają na zmianę, pierścień DALEJ pokazuje postęp filmu ----------
+const filmy = [...document.querySelectorAll('.hero__wideo')];
 const heroDalej = document.getElementById('heroDalej');
+const heroNr = document.getElementById('heroNr');
+const heroNazwa = document.getElementById('heroNazwa');
+const heroOpis = document.getElementById('heroOpis');
+let film = 0;
 const start = () => document.body.classList.add('gotowe');
-if (heroWideo.readyState >= 2) start();
-else { heroWideo.addEventListener('loadeddata', start, { once: true }); setTimeout(start, 1500); }
-if (reduce) heroWideo.pause();
+if (filmy[0].readyState >= 2) start();
+else { filmy[0].addEventListener('loadeddata', start, { once: true }); setTimeout(start, 1500); }
+// następna rolka ładuje się dopiero, gdy pierwsza już gra
+filmy[0].addEventListener('playing', () => filmy.forEach(v => { if (v.preload === 'none') v.preload = 'auto'; }), { once: true });
+
+// odtwarzanie z ponowieniem, gdy przeglądarka odrzuci pierwszą próbę (np. film jeszcze się ładuje)
+const graj = (v) => v.play().catch(() => v.addEventListener('canplay', () => { if (v.classList.contains('aktywne')) v.play().catch(() => {}); }, { once: true }));
+document.addEventListener('visibilitychange', () => { if (!document.hidden && !reduce) graj(filmy[film]); });
+
+function pokazFilm(i){
+  film = (i + filmy.length) % filmy.length;
+  filmy.forEach((v, k) => {
+    if (k === film) { v.currentTime = 0; v.classList.add('aktywne'); if (!reduce) graj(v); }
+    else { v.classList.remove('aktywne'); setTimeout(() => { if (!v.classList.contains('aktywne')) v.pause(); }, 1600); }
+  });
+  heroNr.textContent = String(film + 1).padStart(3, '0');
+  heroNazwa.textContent = filmy[film].dataset.nazwa;
+  heroOpis.textContent = '· ' + filmy[film].dataset.opis;
+}
+filmy.forEach(v => v.addEventListener('ended', () => pokazFilm(film + 1)));
+heroDalej.addEventListener('click', () => pokazFilm(film + 1));
+if (reduce) filmy[0].pause();
 (function tik(){
-  if (heroWideo.duration) heroDalej.style.setProperty('--pk', (heroWideo.currentTime / heroWideo.duration).toFixed(4));
+  const v = filmy[film];
+  if (v.duration) heroDalej.style.setProperty('--pk', (v.currentTime / v.duration).toFixed(4));
   requestAnimationFrame(tik);
 })();
 

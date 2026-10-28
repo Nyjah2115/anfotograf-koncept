@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/lotec-poster.jpg">
-<link rel="stylesheet" href="style.css?v=7">
+<link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -52,9 +52,12 @@
 
 <!-- ===== HERO: monochrome, zdjęcia zmieniają się, nazwisko zostaje ===== -->
 <section class="hero" id="hero">
-  <video class="hero__wideo" id="heroWideo" autoplay muted loop playsinline poster="img/lotec-poster.jpg" aria-label="Lotec C1000 na Ultrace 2026, fragment rolki Arkadiusza Nojka">
+  <video class="hero__wideo aktywne" autoplay muted playsinline poster="img/lotec-poster.jpg" data-nazwa="Lotec C1000" data-opis="Ultrace 2026" aria-label="Lotec C1000 na Ultrace 2026, fragment rolki Arkadiusza Nojka">
     <source src="img/lotec-1080.mp4" type='video/mp4; codecs="vp09.00.40.08"'>
     <source src="img/lotec-720.mp4" type="video/mp4">
+  </video>
+  <video class="hero__wideo" muted playsinline preload="none" poster="img/rolki/a45.jpg" data-nazwa="AMG A45 S" data-opis="Rolling shots" style="object-position:50% 72%" aria-label="Mercedes-AMG A45 S, fragment rolki Arkadiusza Nojka">
+    <source src="img/rolki/a45.mp4" type="video/mp4">
   </video>
 
   <div class="hero__srodek">
@@ -65,10 +68,10 @@
 
   <div class="hero__dol wejscie">
     <a class="link-strzalka" href="#portfolio">Zobacz portfolio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></a>
-    <p class="hero__nr"><b>Lotec C1000</b> <span>· Ultrace 2026</span></p>
-    <a class="dalej" id="heroDalej" href="#portfolio"><b>DALEJ</b><span>Portfolio</span>
+    <p class="hero__nr"><em id="heroNr">001</em> <span>/ 002</span> <b id="heroNazwa">Lotec C1000</b> <span id="heroOpis">· Ultrace 2026</span></p>
+    <button class="dalej" id="heroDalej" type="button"><b>DALEJ</b><span>Następna rolka</span>
       <span class="dalej__kolo"><svg class="dalej__pierscien" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/><circle class="postep" cx="24" cy="24" r="22.5"/></svg><svg class="dalej__grot" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7l5 5-5 5"/></svg></span>
-    </a>
+    </button>
   </div>
 </section>
 
@@ -270,6 +273,6 @@
   <p class="lb__opis"></p>
 </div>
 
-<script src="script.js?v=6"></script>
+<script src="script.js?v=7"></script>
 </body>
 </html>
