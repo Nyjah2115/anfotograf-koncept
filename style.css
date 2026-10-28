@@ -234,7 +234,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   .kroki{grid-template-columns:repeat(2,1fr);gap:40px 30px}
 }
 @media (max-width:900px){
-  .nav__menu{position:fixed;inset:0;z-index:-1;flex-direction:column;justify-content:center;gap:6px;margin:0;padding:90px var(--gutter) 60px;background:rgba(11,11,11,.97);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s .45s}
+  .nav__menu{position:fixed;inset:0;z-index:-1;flex-direction:column;justify-content:center;gap:6px;margin:0;padding:90px var(--gutter) 60px;background:var(--bg);opacity:0;visibility:hidden;transition:opacity .45s var(--ease),visibility 0s .45s}
+  .nav--otwarte{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none}
   .nav--otwarte .nav__menu{opacity:1;visibility:visible;transition:opacity .45s var(--ease)}
   .nav__menu a{font-family:var(--szeroki);font-stretch:125%;font-weight:800;font-size:clamp(30px,9vw,46px);line-height:1.15;text-transform:uppercase;color:var(--tekst);transform:translateY(24px);opacity:0;transition:transform .6s var(--ease),opacity .6s var(--ease)}
   .nav--otwarte .nav__menu a{transform:none;opacity:1}
