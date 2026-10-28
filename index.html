@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/porsche-studio.jpg">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="preload" as="image" href="img/roma_0.jpg">
+<link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -26,12 +26,12 @@
 
 <div class="koncept-pasek">
   <span class="kropka"></span>
-  <span>Koncept strony od <b>Dawid Webdesign</b>. Zdjęcia są poglądowe, w gotowej wersji będą Twoje realizacje.</span>
+  <span>Koncept strony od <b>Dawid Webdesign</b>. Wszystkie zdjęcia: @arkadiusz.nojek.</span>
 </div>
 
 <!-- ===== NAWIGACJA ===== -->
 <header class="nav" id="nav">
-  <a href="#top" class="nav__logo"><span class="znak">AN</span>ARKADIUSZ <span class="szary">NOJEK</span></a>
+  <a href="#top" class="nav__logo">ARKADIUSZ <span class="szary">NOJEK</span></a>
   <nav class="nav__menu" id="menu" aria-label="Menu główne">
     <a href="#portfolio">Portfolio</a>
     <a href="#wideo">Wideo</a>
@@ -53,10 +53,10 @@
 <!-- ===== HERO: monochrome, zdjęcia zmieniają się, nazwisko zostaje ===== -->
 <section class="hero" id="hero">
   <div class="hero__zdjecia">
-    <img class="hero__foto aktywne" src="img/porsche-studio.jpg" alt="Coupé w ciemnym studiu" data-nazwa="Studio">
-    <img class="hero__foto" src="img/rolls.jpg" alt="Limuzyna na ulicy w mieście" data-nazwa="Miasto" loading="lazy">
-    <img class="hero__foto" src="img/hero.jpg" alt="Grill i felga grand tourera nocą" data-nazwa="Detal" loading="lazy">
-    <img class="hero__foto" src="img/porsche-biale.jpg" alt="Srebrne coupé na czarnym tle" data-nazwa="Światło" loading="lazy">
+    <img class="hero__foto aktywne" src="img/roma_0.jpg" alt="Ferrari Roma w ruchu na tle budynku" data-nazwa="Ferrari Roma" style="object-position:50% 62%">
+    <img class="hero__foto" src="img/huracan_0.jpg" alt="Lamborghini Huracán EVO przed wjazdem do garażu" data-nazwa="Huracán EVO" style="object-position:50% 64%" loading="lazy">
+    <img class="hero__foto" src="img/temerario_0.jpg" alt="Lamborghini Temerario przed budynkiem" data-nazwa="Temerario" style="object-position:50% 50%" loading="lazy">
+    <img class="hero__foto" src="img/cyber_0.jpg" alt="Tesla Cybertruck z zapalonymi światłami" data-nazwa="Cybertruck" style="object-position:50% 56%" loading="lazy">
   </div>
 
   <div class="hero__srodek">
@@ -67,7 +67,7 @@
 
   <div class="hero__dol wejscie">
     <a class="link-strzalka" href="#portfolio">Zobacz portfolio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></a>
-    <p class="hero__nr"><b id="heroNr">001</b> <span>/ 004</span> <em id="heroNazwa">Studio</em></p>
+    <p class="hero__nr"><b id="heroNr">001</b> <span>/ 004</span> <em id="heroNazwa">Ferrari Roma</em></p>
     <button class="dalej" id="heroDalej" type="button"><b>DALEJ</b><span>Następny kadr</span>
       <span class="dalej__kolo"><svg class="dalej__pierscien" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/><circle class="postep" cx="24" cy="24" r="22.5"/></svg><svg class="dalej__grot" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7l5 5-5 5"/></svg></span>
     </button>
@@ -83,7 +83,7 @@
         <h2 class="tytul reveal">Strefa<br><span class="szary">moto</span></h2>
       </div>
       <div class="naglowek__prawo">
-        <p class="wstep reveal">Noc, światło i&nbsp;detal. Zdjęcia gotowe na stronę marki, do&nbsp;katalogu i&nbsp;na&nbsp;social media.</p>
+        <p class="wstep reveal">Wybrane sesje z&nbsp;ostatnich miesięcy: supersamochody, rolling shots i&nbsp;detale. Kliknij zdjęcie, żeby je powiększyć.</p>
         <div class="strzalki reveal">
           <button class="strzalka" type="button" id="tasmaWstecz" aria-label="Poprzednie zdjęcia"><svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5"/></svg></button>
           <button class="strzalka" type="button" id="tasmaDalej" aria-label="Następne zdjęcia"><svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg></button>
@@ -93,20 +93,21 @@
   </div>
 
   <div class="tasma" id="tasma">
-    <figure class="kadr"><span class="kadr__foto"><img src="img/ferrari-miasto.jpg" alt="Czerwone auto sportowe na ulicy nocą" loading="lazy"></span><figcaption><b>Miasto nocą</b><span>Sesja w centrum, światło latarni i&nbsp;neonów.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/bugatti.jpg" alt="Hypercar od frontu w ciemnym studiu" loading="lazy"></span><figcaption><b>Studio</b><span>Jedno źródło światła i&nbsp;czysta czerń.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/grill.jpg" alt="Reflektor i grill limuzyny" loading="lazy"></span><figcaption><b>Detal</b><span>Reflektor, chrom i&nbsp;faktura lakieru.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/garaz.jpg" alt="Pomarańczowe auto sportowe w garażu" loading="lazy"></span><figcaption><b>Garaż</b><span>Kadr z&nbsp;podziemnego parkingu.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/jaguar.jpg" alt="Sedan oświetlony nocą pod gwiazdami" loading="lazy"></span><figcaption><b>Light painting</b><span>Długi czas naświetlania i&nbsp;latarka.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/aventador.jpg" alt="Szare auto sportowe przy restauracji" loading="lazy"></span><figcaption><b>Przed lokalem</b><span>Auto w&nbsp;miejscu, do&nbsp;którego pasuje.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/reflektor.jpg" alt="Czerwone auto sportowe z zapalonymi reflektorami" loading="lazy"></span><figcaption><b>Reflektory</b><span>Światła auta jako jedyne oświetlenie.</span></figcaption></figure>
-    <figure class="kadr"><span class="kadr__foto"><img src="img/tyl-noc.jpg" alt="Tył czarnej limuzyny o zmierzchu" loading="lazy"></span><figcaption><b>Zmierzch</b><span>Niebieska godzina i&nbsp;tylne lampy.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-temerario_0.jpg" alt="Lamborghini Temerario przed budynkiem" loading="lazy"></span><figcaption><b data-typ="sesja">Temerario</b><span>Nowe Lamborghini i&nbsp;światło dzienne w&nbsp;mieście.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-gt4rs_1.jpg" alt="Porsche GT4 RS w livery między szklanymi biurowcami" loading="lazy"></span><figcaption><b data-typ="sesja">GT4 RS</b><span>Porsche w&nbsp;livery między szklanymi wieżowcami.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-roma_2.jpg" alt="Felga Ferrari Roma i zachód słońca odbity w fasadzie" loading="lazy"></span><figcaption><b data-typ="sesja">Ferrari Roma</b><span>Zachód słońca odbity w&nbsp;fasadzie budynku.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-huracan_1.jpg" alt="Tylne światła Lamborghini Huracán EVO" loading="lazy"></span><figcaption><b data-typ="detal">Huracán EVO</b><span>Tylne lampy i&nbsp;matowa czerń.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-db12_1.jpg" alt="Felga Aston Martina DB12 z bliska" loading="lazy"></span><figcaption><b data-typ="detal">Aston DB12</b><span>Brązowe felgi i&nbsp;zielony lakier.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-urus_0.jpg" alt="Żółte Lamborghini Urus na przejściu dla pieszych" loading="lazy"></span><figcaption><b data-typ="rolling">Urus</b><span>Rolling shots w&nbsp;centrum miasta.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-rs3_0.jpg" alt="Zielone Audi RS3 z bliska" loading="lazy"></span><figcaption><b data-typ="sesja">Audi RS3</b><span>Sony i&nbsp;35&nbsp;mm, bez filtrów.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-taycan_1.jpg" alt="Przód Porsche Taycan Turbo S" loading="lazy"></span><figcaption><b data-typ="sesja">Taycan Turbo S</b><span>Elektryczne Porsche w&nbsp;ciemnym kadrze.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/k-ultrace2_1.jpg" alt="Tył Nissana Skyline na zlocie Ultrace" loading="lazy"></span><figcaption><b data-typ="event">Ultrace 2026</b><span>Relacja ze zlotu w&nbsp;Gdańsku.</span></figcaption></figure>
   </div>
 </section>
 
 <!-- ===== WIDEO: pas MONOCHROME ===== -->
 <section class="mono" id="wideo">
-  <img class="mono__foto" src="img/ruch.jpg" alt="Białe auto sportowe w ruchu na tle świateł miasta" loading="lazy">
+  <img class="mono__foto" src="img/db12_0.jpg" alt="Aston Martin DB12 w ruchu na drodze" style="object-position:50% 55%" loading="lazy">
   <div class="mono__gora">
     <p class="licznik">003 <span>/ 006</span></p>
     <p class="etykieta">Wideo</p>
@@ -171,7 +172,7 @@
 <!-- ===== PROCES ===== -->
 <section class="proces" id="proces">
   <div class="proces__scena">
-    <img class="proces__foto" src="img/rr-grill.jpg" alt="Grill luksusowej limuzyny o zmierzchu" loading="lazy">
+    <img class="proces__foto" src="img/huracan_1.jpg" alt="Tylne światła Lamborghini Huracán EVO" loading="lazy">
     <div class="proces__napis wrap">
       <p class="licznik reveal">005 <span>/ 006</span></p>
       <p class="etykieta reveal">Proces · brief · zdjęcia · montaż</p>
@@ -209,7 +210,7 @@
       </form>
     </div>
     <figure class="kontakt__foto chrom-ramka reveal">
-      <img src="img/reflektory-noc.jpg" alt="Reflektory auta w ciemności" loading="lazy">
+      <img src="img/k-taycan_0.jpg" alt="Porsche Taycan Turbo S z tyłu" loading="lazy">
       <span class="iskra" aria-hidden="true"></span>
     </figure>
   </div>
@@ -219,8 +220,8 @@
 
 <footer class="stopka">
   <div class="wrap stopka__rzad">
-    <a href="#top" class="nav__logo"><span class="znak">AN</span>ARKADIUSZ <span class="szary">NOJEK</span></a>
-    <span>Koncept strony: Dawid Webdesign · zdjęcia poglądowe: Unsplash</span>
+    <a href="#top" class="nav__logo">ARKADIUSZ <span class="szary">NOJEK</span></a>
+    <span>Koncept strony: Dawid Webdesign · zdjęcia: @arkadiusz.nojek</span>
     <span>© 2026</span>
   </div>
 </footer>
@@ -233,6 +234,6 @@
   <p class="lb__opis"></p>
 </div>
 
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>
