@@ -290,8 +290,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 /* brief: wybór zakresu */
 .wybor{border:0;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
 .wybor legend{width:100%;margin-bottom:12px;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--szary);padding:0}
-.wybor label{display:block;cursor:pointer}
-.wybor input{position:absolute;opacity:0;pointer-events:none}
+.wybor label{position:relative;display:block;cursor:pointer}
+.wybor input{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
 .wybor label span{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:999px;box-shadow:inset 0 0 0 1px var(--linia-2);font-size:14px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--jasny);transition:background .25s,color .25s,box-shadow .25s}
 .wybor label:hover span{box-shadow:inset 0 0 0 1px rgba(255,255,255,.5);color:#fff}
 .wybor input:checked+span{background:var(--tekst);color:#000;box-shadow:none}
@@ -334,7 +334,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   .nav--otwarte .nav__kropki i:nth-child(4){transform:translate(-5px,-5px)}
   .btn--male{display:none}
   .naglowek--rzad{display:block}
-  .naglowek__prawo{margin-top:26px}
+  .naglowek__prawo,.wstep.naglowek__prawo{margin-top:22px}
   .kontakt__siatka{grid-template-columns:1fr}
   .kontakt__foto{aspect-ratio:4/3}
   .kontakt__foto--wtopione{aspect-ratio:4/5;margin:0 calc(var(--gutter)*-1)}
@@ -363,6 +363,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
   .mono__slowo{position:relative;bottom:auto;margin-top:-11vw;order:3}
   .mono__dol{position:static;order:4;padding:28px var(--gutter) 0;grid-template-columns:1fr auto}
   .mono__nr{display:none}
+  .mono__dol>span[aria-hidden]{display:none}
   .uslugi{grid-template-columns:1fr}
   .usluga::before,.usluga::after{display:none}
   .usluga+.usluga::after{display:block;content:"";position:absolute;top:0;left:28px;right:28px;height:1.5px;background:linear-gradient(to right,transparent,#fff 18%,#5a5a5a 45%,#e6e6e6 70%,transparent);opacity:.55}
