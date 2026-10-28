@@ -1,124 +1,124 @@
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// ---------- hero: slajdy z paskami postępu ----------
-const hero = document.querySelector('.hero');
-const slides = [...hero.querySelectorAll('.slide')];
-const bars = [...hero.querySelectorAll('.bar')];
-const DURATION = 7000;
-let cur = 0, elapsed = 0, paused = reduce, last = performance.now();
+// wejście hero po załadowaniu pierwszego zdjęcia
+const pierwsze = document.querySelector('.hero__foto');
+const start = () => document.body.classList.add('gotowe');
+if (pierwsze.complete) setTimeout(start, 100);
+else { pierwsze.addEventListener('load', start); setTimeout(start, 1800); }
 
-function goSlide(i){
-  cur = (i + slides.length) % slides.length;
-  elapsed = 0;
-  slides.forEach((s, k) => s.classList.toggle('is-on', k === cur));
-  bars.forEach((b, k) => { b.classList.toggle('is-on', k === cur); b.style.setProperty('--p', k < cur ? 1 : 0); });
+// ---------- hero: kadry zmieniają się, pierścień DALEJ pokazuje czas ----------
+const fotki = [...document.querySelectorAll('.hero__foto')];
+const heroNr = document.getElementById('heroNr');
+const heroNazwa = document.getElementById('heroNazwa');
+const heroDalej = document.getElementById('heroDalej');
+const CZAS = 6500;
+let kadr = 0, uplynelo = 0, ostatnio = performance.now();
+function pokazKadr(i){
+  kadr = (i + fotki.length) % fotki.length;
+  uplynelo = 0;
+  fotki.forEach((f, k) => f.classList.toggle('aktywne', k === kadr));
+  heroNr.textContent = String(kadr + 1).padStart(3, '0');
+  heroNazwa.textContent = fotki[kadr].dataset.nazwa;
 }
-(function tick(now){
-  const dt = now - last; last = now;
-  if (!paused) {
-    elapsed += dt;
-    bars[cur].style.setProperty('--p', Math.min(1, elapsed / DURATION));
-    if (elapsed >= DURATION) goSlide(cur + 1);
+(function tik(teraz){
+  const dt = teraz - ostatnio; ostatnio = teraz;
+  if (!reduce && !document.hidden) {
+    uplynelo += dt;
+    if (uplynelo >= CZAS) pokazKadr(kadr + 1);
   }
-  requestAnimationFrame(tick);
-})(last);
-bars.forEach((b, k) => b.addEventListener('click', () => goSlide(k)));
-const pauseBtn = hero.querySelector('.pause');
-const setPaused = (p) => {
-  paused = p;
-  hero.classList.toggle('paused', p);
-  pauseBtn.setAttribute('aria-label', p ? 'Wznów pokaz' : 'Zatrzymaj pokaz');
-};
-pauseBtn.addEventListener('click', () => setPaused(!paused));
-setPaused(paused);
+  heroDalej.style.setProperty('--pk', Math.min(1, uplynelo / CZAS));
+  requestAnimationFrame(tik);
+})(ostatnio);
+heroDalej.addEventListener('click', () => pokazKadr(kadr + 1));
 
 // ---------- nawigacja ----------
-const nav = document.querySelector('.nav');
-const onScroll = () => nav.classList.toggle('solid', scrollY > 40);
-addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+const nav = document.getElementById('nav');
+const naScroll = () => nav.classList.toggle('nav--tlo', scrollY > 40);
+addEventListener('scroll', naScroll, { passive: true });
+naScroll();
 
-const menuBtn = document.querySelector('.menu-btn');
-const menu = document.querySelector('.menu');
-const toggleMenu = (open) => {
-  menu.classList.toggle('open', open);
-  menuBtn.setAttribute('aria-expanded', open);
-  menu.setAttribute('aria-hidden', !open);
-  menuBtn.querySelector('.menu-label').textContent = open ? 'Zamknij' : 'Menu';
-  document.body.style.overflow = open ? 'hidden' : '';
+const burger = document.getElementById('burger');
+const ustawMenu = (o) => {
+  nav.classList.toggle('nav--otwarte', o);
+  burger.setAttribute('aria-expanded', o);
+  document.body.style.overflow = o ? 'hidden' : '';
 };
-menuBtn.addEventListener('click', () => toggleMenu(!menu.classList.contains('open')));
-menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
-addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) toggleMenu(false); });
+burger.addEventListener('click', () => ustawMenu(!nav.classList.contains('nav--otwarte')));
+document.querySelectorAll('.nav__menu a').forEach(a => a.addEventListener('click', () => ustawMenu(false)));
 
-// ---------- wejścia przy przewijaniu ----------
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+// aktywny link w menu (kropka pod spodem)
+const linki = [...document.querySelectorAll('.nav__menu a')];
+const sekcje = linki.map(a => document.querySelector(a.getAttribute('href')));
+const ioNav = new IntersectionObserver(wpisy => {
+  wpisy.forEach(w => {
+    if (!w.isIntersecting) return;
+    linki.forEach(a => a.classList.toggle('aktywny', a.getAttribute('href') === '#' + w.target.id));
+  });
+}, { rootMargin: '-45% 0px -50% 0px' });
+sekcje.forEach(s => s && ioNav.observe(s));
 
-// ---------- projekty: karuzela ----------
-const stage = document.querySelector('.proj-stage');
-const track = document.querySelector('.proj-track');
-const projs = [...track.children];
-const titles = [...document.querySelectorAll('.proj-title')];
-const tabs = [...document.querySelectorAll('.tab')];
-const count = document.querySelector('.proj-count b');
-let pi = 0;
-function goProj(i){
-  pi = (i + projs.length) % projs.length;
-  const w = projs[0].offsetWidth;
-  const m = parseFloat(getComputedStyle(projs[0]).marginRight);
-  track.style.transform = `translateX(${(stage.offsetWidth - w) / 2 - pi * (w + m)}px)`;
-  projs.forEach((p, k) => p.classList.toggle('is-on', k === pi));
-  titles.forEach((t, k) => t.classList.toggle('is-on', k === pi));
-  tabs.forEach((t, k) => { t.classList.toggle('is-on', k === pi); t.setAttribute('aria-selected', k === pi); });
-  count.textContent = String(pi + 1).padStart(2, '0');
-}
-document.querySelector('.arrow.prev').addEventListener('click', () => goProj(pi - 1));
-document.querySelector('.arrow.next').addEventListener('click', () => goProj(pi + 1));
-tabs.forEach((t, k) => t.addEventListener('click', () => goProj(k)));
-projs.forEach((p, k) => p.addEventListener('click', () => { if (k !== pi) goProj(k); }));
-let sx = null;
-stage.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
-stage.addEventListener('touchend', e => {
-  if (sx === null) return;
-  const dx = e.changedTouches[0].clientX - sx;
-  if (Math.abs(dx) > 45) goProj(pi + (dx < 0 ? 1 : -1));
-  sx = null;
+// ---------- pojawianie się przy przewijaniu ----------
+const io = new IntersectionObserver(wpisy => {
+  wpisy.forEach(w => { if (w.isIntersecting) { w.target.classList.add('widac'); io.unobserve(w.target); } });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal, .mono').forEach(el => io.observe(el));
+
+// litery w wielkim słowie wjeżdżają po kolei
+document.querySelectorAll('[data-litery]').forEach(el => {
+  el.innerHTML = [...el.textContent].map((z, i) => `<span class="l" style="--i:${i}">${z}</span>`).join('');
 });
-addEventListener('resize', () => goProj(pi));
-goProj(0);
 
-// ---------- lightbox ----------
-const tiles = [...document.querySelectorAll('.tile')];
+// lekki zoom zdjęcia w pasie MONOCHROME przy przewijaniu
+const mono = document.querySelector('.mono');
+addEventListener('scroll', () => {
+  const r = mono.getBoundingClientRect();
+  const p = Math.min(1, Math.max(0, 1 - r.top / innerHeight));
+  mono.style.setProperty('--z', p.toFixed(3));
+}, { passive: true });
+
+// ---------- taśma portfolio ----------
+const tasma = document.getElementById('tasma');
+const wstecz = document.getElementById('tasmaWstecz');
+const dalej = document.getElementById('tasmaDalej');
+const krok = () => tasma.querySelector('.kadr').offsetWidth + 22;
+wstecz.addEventListener('click', () => tasma.scrollBy({ left: -krok(), behavior: 'smooth' }));
+dalej.addEventListener('click', () => tasma.scrollBy({ left: krok(), behavior: 'smooth' }));
+const strzalkiStan = () => {
+  wstecz.disabled = tasma.scrollLeft < 4;
+  dalej.disabled = tasma.scrollLeft > tasma.scrollWidth - tasma.clientWidth - 4;
+};
+tasma.addEventListener('scroll', strzalkiStan, { passive: true });
+addEventListener('resize', strzalkiStan);
+strzalkiStan();
+
+// ---------- podgląd zdjęcia ----------
+const kadry = [...document.querySelectorAll('.kadr')];
 const lb = document.querySelector('.lb');
 const lbImg = lb.querySelector('img');
-const lbCap = lb.querySelector('.lb-cap');
+const lbOpis = lb.querySelector('.lb__opis');
 let li = 0;
-const showLb = (i) => {
-  li = (i + tiles.length) % tiles.length;
-  const img = tiles[li].querySelector('img');
-  lbImg.src = img.src;
-  lbImg.alt = img.alt;
-  lbCap.textContent = `${String(li + 1).padStart(2, '0')} / ${String(tiles.length).padStart(2, '0')} · ${tiles[li].querySelector('figcaption').lastChild.textContent}`;
+const pokazLb = (i) => {
+  li = (i + kadry.length) % kadry.length;
+  const img = kadry[li].querySelector('img');
+  lbImg.src = img.src; lbImg.alt = img.alt;
+  lbOpis.textContent = `${String(li + 1).padStart(3, '0')} / ${String(kadry.length).padStart(3, '0')} · ${kadry[li].querySelector('b').textContent}`;
 };
-const openLb = (i) => { showLb(i); lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
-const closeLb = () => { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
-tiles.forEach((t, k) => t.addEventListener('click', () => openLb(k)));
-lb.querySelector('.lb-close').addEventListener('click', closeLb);
-lb.querySelector('.lb-prev').addEventListener('click', () => showLb(li - 1));
-lb.querySelector('.lb-next').addEventListener('click', () => showLb(li + 1));
-lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+const otworzLb = (i) => { pokazLb(i); lb.classList.add('otwarty'); lb.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden'; };
+const zamknijLb = () => { lb.classList.remove('otwarty'); lb.setAttribute('aria-hidden', 'true'); document.body.style.overflow = ''; };
+kadry.forEach((k, i) => k.addEventListener('click', () => otworzLb(i)));
+lb.querySelector('.lb__x').addEventListener('click', zamknijLb);
+lb.querySelector('.lb__wstecz').addEventListener('click', () => pokazLb(li - 1));
+lb.querySelector('.lb__dalej').addEventListener('click', () => pokazLb(li + 1));
+lb.addEventListener('click', e => { if (e.target === lb) zamknijLb(); });
 addEventListener('keydown', e => {
-  if (!lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLb();
-  if (e.key === 'ArrowLeft') showLb(li - 1);
-  if (e.key === 'ArrowRight') showLb(li + 1);
+  if (e.key === 'Escape') { zamknijLb(); ustawMenu(false); }
+  if (!lb.classList.contains('otwarty')) return;
+  if (e.key === 'ArrowLeft') pokazLb(li - 1);
+  if (e.key === 'ArrowRight') pokazLb(li + 1);
 });
 
 // ---------- formularz: otwiera pocztę z gotową wiadomością ----------
-document.querySelector('.form').addEventListener('submit', e => {
+document.querySelector('.formularz').addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target;
   if (!f.imie.value.trim() || !f.tresc.value.trim()) {

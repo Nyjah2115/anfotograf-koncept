@@ -8,251 +8,229 @@
 <meta name="description" content="Koncept strony portfolio: zdjęcia i filmy dla marek motoryzacyjnych. Warszawa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="img/porsche-studio.jpg">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="concept">
-  <span class="dot"></span>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="chrom" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff"/><stop offset=".3" stop-color="#7a7a7a"/><stop offset=".5" stop-color="#f2f2f2"/><stop offset=".72" stop-color="#4a4a4a"/><stop offset="1" stop-color="#dcdcdc"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div class="ziarno" aria-hidden="true"></div>
+
+<div class="koncept-pasek">
+  <span class="kropka"></span>
   <span>Koncept strony od <b>Dawid Webdesign</b>. Zdjęcia są poglądowe, w gotowej wersji będą Twoje realizacje.</span>
 </div>
 
-<header class="nav">
-  <button class="menu-btn" aria-expanded="false" aria-controls="menu"><span class="burger"><i></i><i></i></span><span class="menu-label">Menu</span></button>
-  <a href="#top" class="wordmark">Arkadiusz Nojek</a>
-  <div class="nav-right">
-    <a href="#kontakt" class="nav-link">Kontakt</a>
-    <a href="https://www.instagram.com/arkadiusz.nojek/" target="_blank" rel="noopener" class="ig" aria-label="Instagram">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1" class="fill"/></svg>
+<!-- ===== NAWIGACJA ===== -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__logo"><span class="znak">AN</span>ARKADIUSZ <span class="szary">NOJEK</span></a>
+  <nav class="nav__menu" id="menu" aria-label="Menu główne">
+    <a href="#portfolio">Portfolio</a>
+    <a href="#wideo">Wideo</a>
+    <a href="#oferta">Oferta</a>
+    <a href="#proces">Proces</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
+  <div class="nav__prawo">
+    <a class="nav__ikona" href="https://www.instagram.com/arkadiusz.nojek/" target="_blank" rel="noopener" aria-label="Instagram @arkadiusz.nojek">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle class="pelna" cx="17.4" cy="6.6" r="1"/></svg>
     </a>
+    <a class="btn btn--male" href="#kontakt">Współpraca</a>
+    <button class="nav__kropki" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><i></i><i></i><i></i><i></i></button>
   </div>
 </header>
 
-<div class="menu" id="menu" aria-hidden="true">
-  <nav class="menu-links">
-    <a href="#projekty"><span>01</span>Projekty</a>
-    <a href="#portfolio"><span>02</span>Portfolio</a>
-    <a href="#oferta"><span>03</span>Oferta</a>
-    <a href="#proces"><span>04</span>Proces</a>
-    <a href="#kontakt"><span>05</span>Kontakt</a>
-  </nav>
-  <div class="menu-side">
-    <img src="img/reflektory-noc.jpg" alt="" loading="lazy">
-    <p>anfotograf.info@gmail.com<br>Warszawa · Polska</p>
-  </div>
-</div>
-
 <main id="top">
 
-  <!-- HERO: pełnoekranowe slajdy -->
-  <section class="hero" aria-roledescription="karuzela" aria-label="Wybrane kadry">
-    <div class="slide is-on">
-      <img src="img/porsche-studio.jpg" alt="Ciemne coupé w studiu z podświetlonymi felgami">
-      <div class="slide-text">
-        <p class="eyebrow"><span>Premium Automotive Content</span></p>
-        <h1 class="h-hero"><span>Auta w najlepszym</span><span>świetle</span></h1>
+<!-- ===== HERO: monochrome, zdjęcia zmieniają się, nazwisko zostaje ===== -->
+<section class="hero" id="hero">
+  <div class="hero__zdjecia">
+    <img class="hero__foto aktywne" src="img/porsche-studio.jpg" alt="Coupé w ciemnym studiu" data-nazwa="Studio">
+    <img class="hero__foto" src="img/rolls.jpg" alt="Limuzyna na ulicy w mieście" data-nazwa="Miasto" loading="lazy">
+    <img class="hero__foto" src="img/hero.jpg" alt="Grill i felga grand tourera nocą" data-nazwa="Detal" loading="lazy">
+    <img class="hero__foto" src="img/porsche-biale.jpg" alt="Srebrne coupé na czarnym tle" data-nazwa="Światło" loading="lazy">
+  </div>
+
+  <div class="hero__srodek">
+    <p class="etykieta wejscie">Premium Automotive Content · Warszawa</p>
+    <h1 class="hero__h1 wejscie" aria-label="Arkadiusz Nojek"><span>Arkadiusz</span><span>Nojek</span></h1>
+    <p class="hero__lead wejscie">Zdjęcia i filmy dla marek motoryzacyjnych, salonów i&nbsp;właścicieli aut, które mają robić wrażenie także na&nbsp;ekranie.</p>
+  </div>
+
+  <div class="hero__dol wejscie">
+    <a class="link-strzalka" href="#portfolio">Zobacz portfolio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></a>
+    <p class="hero__nr"><b id="heroNr">001</b> <span>/ 004</span> <em id="heroNazwa">Studio</em></p>
+    <button class="dalej" id="heroDalej" type="button"><b>DALEJ</b><span>Następny kadr</span>
+      <span class="dalej__kolo"><svg class="dalej__pierscien" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/><circle class="postep" cx="24" cy="24" r="22.5"/></svg><svg class="dalej__grot" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7l5 5-5 5"/></svg></span>
+    </button>
+  </div>
+</section>
+
+<!-- ===== PORTFOLIO ===== -->
+<section class="sekcja" id="portfolio">
+  <div class="wrap">
+    <header class="naglowek naglowek--rzad">
+      <div>
+        <p class="licznik reveal">002 <span>/ 006</span></p>
+        <h2 class="tytul reveal">Strefa<br><span class="szary">moto</span></h2>
       </div>
-    </div>
-    <div class="slide">
-      <img src="img/rolls.jpg" alt="Czarna limuzyna na ulicy w mieście" loading="lazy">
-      <div class="slide-text">
-        <p class="eyebrow"><span>Sesje w mieście</span></p>
-        <h2 class="h-hero"><span>Noc. Światło.</span><span>Detal.</span></h2>
-      </div>
-    </div>
-    <div class="slide">
-      <img src="img/ruch.jpg" alt="Białe auto sportowe w ruchu" loading="lazy">
-      <div class="slide-text">
-        <p class="eyebrow"><span>Rolki i wideo</span></p>
-        <h2 class="h-hero"><span>Ruch, który</span><span>się ogląda</span></h2>
-      </div>
-    </div>
-
-
-    <a href="#projekty" class="btn-sq hero-btn">Zobacz projekty <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
-
-    <div class="hero-ctrl">
-      <button class="bar is-on" aria-label="Slajd 1"><i></i></button>
-      <button class="bar" aria-label="Slajd 2"><i></i></button>
-      <button class="bar" aria-label="Slajd 3"><i></i></button>
-      <button class="pause" aria-label="Zatrzymaj pokaz"><svg viewBox="0 0 24 24"><path class="p-pause" d="M9 7v10M15 7v10"/><path class="p-play" d="M9 6.5v11l9-5.5z"/></svg></button>
-    </div>
-
-    <a href="#intro" class="scroll-down" aria-label="Przewiń w dół"><svg viewBox="0 0 24 24"><path d="M12 4v15M6 13l6 6 6-6"/></svg></a>
-  </section>
-
-  <!-- INTRO -->
-  <section class="intro light" id="intro">
-    <p class="label rv">Arkadiusz Nojek · Warszawa</p>
-    <h2 class="statement rv">Tworzę zdjęcia i filmy dla marek motoryzacyjnych, salonów i właścicieli aut. Foto i wideo w jednych rękach.</h2>
-    <dl class="facts">
-      <div class="rv"><dt>7,5 tys.</dt><dd>obserwujących na Instagramie</dd></div>
-      <div class="rv"><dt>Foto + wideo</dt><dd>z jednego dnia zdjęciowego</dd></div>
-      <div class="rv"><dt>Warszawa</dt><dd>i dojazd na sesje w Polsce</dd></div>
-    </dl>
-  </section>
-
-  <!-- PROJEKTY: karuzela -->
-  <section class="projects light" id="projekty">
-    <div class="proj-head">
-      <p class="label">Wybrane projekty</p>
-      <p class="proj-count"><b>01</b> / 05</p>
-    </div>
-
-    <div class="proj-titles" aria-live="polite">
-      <h3 class="proj-title is-on">Hypercar w studiu</h3>
-      <h3 class="proj-title">Grand tourer nocą</h3>
-      <h3 class="proj-title">Light painting</h3>
-      <h3 class="proj-title">Włoska noc</h3>
-      <h3 class="proj-title">Coupé w ciemności</h3>
-    </div>
-
-    <div class="proj-stage">
-      <button class="arrow prev" aria-label="Poprzedni projekt"><svg viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
-      <div class="proj-viewport">
-        <div class="proj-track">
-          <figure class="proj is-on"><img src="img/bugatti.jpg" alt="Hypercar od frontu w ciemnym studiu" loading="lazy"></figure>
-          <figure class="proj"><img src="img/hero.jpg" alt="Grill i felga grand tourera nocą" loading="lazy"></figure>
-          <figure class="proj"><img src="img/jaguar.jpg" alt="Sedan oświetlony nocą pod gwiazdami" loading="lazy"></figure>
-          <figure class="proj"><img src="img/reflektor.jpg" alt="Czerwone auto sportowe z zapalonymi reflektorami" loading="lazy"></figure>
-          <figure class="proj"><img src="img/porsche-biale.jpg" alt="Srebrne coupé na czarnym tle" loading="lazy"></figure>
+      <div class="naglowek__prawo">
+        <p class="wstep reveal">Noc, światło i&nbsp;detal. Zdjęcia gotowe na stronę marki, do&nbsp;katalogu i&nbsp;na&nbsp;social media.</p>
+        <div class="strzalki reveal">
+          <button class="strzalka" type="button" id="tasmaWstecz" aria-label="Poprzednie zdjęcia"><svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5"/></svg></button>
+          <button class="strzalka" type="button" id="tasmaDalej" aria-label="Następne zdjęcia"><svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg></button>
         </div>
       </div>
-      <button class="arrow next" aria-label="Następny projekt"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
-    </div>
+    </header>
+  </div>
 
-    <div class="proj-tabs" role="tablist">
-      <button class="tab is-on" role="tab">Studio</button>
-      <button class="tab" role="tab">Detal</button>
-      <button class="tab" role="tab">Noc</button>
-      <button class="tab" role="tab">Miasto</button>
-      <button class="tab" role="tab">Studio II</button>
-    </div>
-  </section>
+  <div class="tasma" id="tasma">
+    <figure class="kadr"><span class="kadr__foto"><img src="img/ferrari-miasto.jpg" alt="Czerwone auto sportowe na ulicy nocą" loading="lazy"></span><figcaption><b>Miasto nocą</b><span>Sesja w centrum, światło latarni i&nbsp;neonów.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/bugatti.jpg" alt="Hypercar od frontu w ciemnym studiu" loading="lazy"></span><figcaption><b>Studio</b><span>Jedno źródło światła i&nbsp;czysta czerń.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/grill.jpg" alt="Reflektor i grill limuzyny" loading="lazy"></span><figcaption><b>Detal</b><span>Reflektor, chrom i&nbsp;faktura lakieru.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/garaz.jpg" alt="Pomarańczowe auto sportowe w garażu" loading="lazy"></span><figcaption><b>Garaż</b><span>Kadr z&nbsp;podziemnego parkingu.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/jaguar.jpg" alt="Sedan oświetlony nocą pod gwiazdami" loading="lazy"></span><figcaption><b>Light painting</b><span>Długi czas naświetlania i&nbsp;latarka.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/aventador.jpg" alt="Szare auto sportowe przy restauracji" loading="lazy"></span><figcaption><b>Przed lokalem</b><span>Auto w&nbsp;miejscu, do&nbsp;którego pasuje.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/reflektor.jpg" alt="Czerwone auto sportowe z zapalonymi reflektorami" loading="lazy"></span><figcaption><b>Reflektory</b><span>Światła auta jako jedyne oświetlenie.</span></figcaption></figure>
+    <figure class="kadr"><span class="kadr__foto"><img src="img/tyl-noc.jpg" alt="Tył czarnej limuzyny o zmierzchu" loading="lazy"></span><figcaption><b>Zmierzch</b><span>Niebieska godzina i&nbsp;tylne lampy.</span></figcaption></figure>
+  </div>
+</section>
 
-  <!-- PORTFOLIO -->
-  <section class="portfolio" id="portfolio">
-    <div class="port-head">
+<!-- ===== WIDEO: pas MONOCHROME ===== -->
+<section class="mono" id="wideo">
+  <img class="mono__foto" src="img/ruch.jpg" alt="Białe auto sportowe w ruchu na tle świateł miasta" loading="lazy">
+  <div class="mono__gora">
+    <p class="licznik">003 <span>/ 006</span></p>
+    <p class="etykieta">Wideo</p>
+  </div>
+  <div class="mono__tekst reveal">
+    <p class="mono__podtytul">Rolki, które się ogląda</p>
+    <p>Krótkie formy pod Instagram i&nbsp;TikToka: pomysł, kadry, montaż i&nbsp;muzyka. Pionowy format gotowy do&nbsp;publikacji na profilu marki.</p>
+  </div>
+  <h2 class="mono__slowo" aria-label="Rolki"><span class="mono__litery" data-litery>ROLKI</span></h2>
+  <div class="mono__dol">
+    <a class="link-strzalka" href="https://www.instagram.com/arkadiusz.nojek/" target="_blank" rel="noopener">Zobacz na Instagramie <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    <p class="mono__nr">9:16 <span>· Reels · TikTok</span></p>
+    <a class="dalej" href="#oferta"><b>DALEJ</b><span>Oferta</span>
+      <span class="dalej__kolo"><svg class="dalej__pierscien" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/></svg><svg class="dalej__grot" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7l5 5-5 5"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== OFERTA ===== -->
+<section class="sekcja" id="oferta">
+  <div class="wrap">
+    <header class="naglowek naglowek--rzad">
       <div>
-        <p class="label rv">Portfolio</p>
-        <h2 class="h-big rv">Strefa Moto</h2>
+        <p class="licznik reveal">004 <span>/ 006</span></p>
+        <h2 class="tytul reveal">Oferta dla<br><span class="szary">Twojej marki</span></h2>
       </div>
-      <p class="port-lead rv">Noc, światło i detal. Kadry gotowe na stronę marki, do katalogu i na social media.</p>
+      <p class="wstep naglowek__prawo reveal">Zdjęcia i&nbsp;wideo robię sam, od&nbsp;planu ujęć po&nbsp;montaż. Marka dostaje spójny materiał z&nbsp;jednego dnia zdjęciowego.</p>
+    </header>
+
+    <div class="panel chrom-ramka reveal">
+      <span class="iskra" aria-hidden="true"></span>
+      <ul class="uslugi">
+        <li class="usluga">
+          <span class="usluga__ikona"><svg viewBox="0 0 48 48"><path d="M6 16h8l4-6h12l4 6h8v22H6z"/><circle cx="24" cy="26" r="7.5"/><circle cx="36.5" cy="21" r="1.2"/></svg></span>
+          <p class="usluga__nr">01</p>
+          <h3>Sesje zdjęciowe</h3>
+          <p class="usluga__opis">Auta dla salonów, dealerów, wypożyczalni i&nbsp;prywatnych właścicieli. Plener, studio albo miasto nocą.</p>
+        </li>
+        <li class="usluga">
+          <span class="usluga__ikona"><svg viewBox="0 0 48 48"><rect x="13" y="4" width="22" height="40" rx="5"/><path d="M21 18v12l10-6z"/></svg></span>
+          <p class="usluga__nr">02</p>
+          <h3>Rolki i&nbsp;wideo</h3>
+          <p class="usluga__opis">Reels i&nbsp;TikTok od scenariusza po montaż. Pionowy format, dźwięk i&nbsp;napisy.</p>
+        </li>
+        <li class="usluga">
+          <span class="usluga__ikona"><svg viewBox="0 0 48 48"><path d="M24 5l5.6 11.4 12.6 1.8-9.1 8.9 2.1 12.5L24 33.7l-11.2 5.9 2.1-12.5-9.1-8.9 12.6-1.8z"/></svg></span>
+          <p class="usluga__nr">03</p>
+          <h3>Premiery i&nbsp;eventy</h3>
+          <p class="usluga__opis">Relacja z&nbsp;premiery modelu, dnia otwartego czy zlotu. Materiał jeszcze tego samego dnia.</p>
+        </li>
+        <li class="usluga">
+          <span class="usluga__ikona"><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="32" rx="3"/><path d="M6 32l10-10 9 9 6-6 11 11"/><circle cx="32" cy="17" r="3"/></svg></span>
+          <p class="usluga__nr">04</p>
+          <h3>Tapety i&nbsp;druk</h3>
+          <p class="usluga__opis">Pliki w&nbsp;wysokiej rozdzielczości: tapety, plakaty, katalogi i&nbsp;materiały do&nbsp;salonu.</p>
+        </li>
+      </ul>
     </div>
-    <div class="grid">
-      <figure class="tile rv"><img src="img/ferrari-miasto.jpg" alt="Czerwone auto sportowe na ulicy nocą" loading="lazy"><figcaption><span>01</span>Miasto nocą</figcaption></figure>
-      <figure class="tile rv"><img src="img/garaz.jpg" alt="Pomarańczowe auto sportowe w garażu" loading="lazy"><figcaption><span>02</span>Garaż</figcaption></figure>
-      <figure class="tile rv"><img src="img/grill.jpg" alt="Reflektor i grill limuzyny" loading="lazy"><figcaption><span>03</span>Detal · reflektor</figcaption></figure>
-      <figure class="tile rv"><img src="img/aventador.jpg" alt="Szare auto sportowe przy restauracji" loading="lazy"><figcaption><span>04</span>Przed lokalem</figcaption></figure>
-      <figure class="tile rv"><img src="img/swiatla.jpg" alt="Tylne światła LED w ciemności" loading="lazy"><figcaption><span>05</span>Światła</figcaption></figure>
-      <figure class="tile rv"><img src="img/tyl-noc.jpg" alt="Tył czarnej limuzyny o zmierzchu" loading="lazy"><figcaption><span>06</span>Zmierzch</figcaption></figure>
+  </div>
+</section>
+
+<!-- ===== PROCES ===== -->
+<section class="proces" id="proces">
+  <div class="proces__scena">
+    <img class="proces__foto" src="img/rr-grill.jpg" alt="Grill luksusowej limuzyny o zmierzchu" loading="lazy">
+    <div class="proces__napis wrap">
+      <p class="licznik reveal">005 <span>/ 006</span></p>
+      <p class="etykieta reveal">Proces · brief · zdjęcia · montaż</p>
+      <h2 class="proces__h2 reveal"><span>Od briefu</span><span>do publikacji</span></h2>
     </div>
-  </section>
-
-  <!-- OFERTA -->
-  <section class="offer light" id="oferta">
-    <div class="offer-head">
-      <p class="label rv">Oferta</p>
-      <h2 class="h-big rv">Co robię</h2>
-    </div>
-
-    <article class="row">
-      <div class="row-media rv"><img src="img/rr-grill.jpg" alt="Grill luksusowej limuzyny o zmierzchu" loading="lazy"></div>
-      <div class="row-text">
-        <span class="row-num rv">01</span>
-        <h3 class="rv">Sesje zdjęciowe</h3>
-        <p class="rv">Auta dla salonów, dealerów, wypożyczalni i prywatnych właścicieli. Plener, studio albo miasto nocą. Zdjęcia w pełnej rozdzielczości, gotowe na stronę i do druku.</p>
-        <a href="#kontakt" class="btn-round rv"><span class="circle"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>Zapytaj o sesję</a>
-      </div>
-    </article>
-
-    <article class="row flip">
-      <div class="row-media reels rv">
-        <div class="reel"><img src="img/panamera.jpg" alt="Coupé na nadmorskiej drodze o zachodzie słońca" loading="lazy"><span class="play"></span><span class="reel-bar"><i></i></span></div>
-        <div class="reel"><img src="img/swiatla.jpg" alt="Tylne światła LED w ciemności" loading="lazy"><span class="play"></span><span class="reel-bar"><i></i></span></div>
-        <div class="reel"><img src="img/stacja.jpg" alt="Jasny SUV na stacji nocą" loading="lazy"><span class="play"></span><span class="reel-bar"><i></i></span></div>
-      </div>
-      <div class="row-text">
-        <span class="row-num rv">02</span>
-        <h3 class="rv">Rolki i krótkie wideo</h3>
-        <p class="rv">Reels i TikTok od pomysłu po montaż: pionowy format, muzyka, napisy. Materiał, który marka może wrzucić od razu po odbiorze.</p>
-        <a href="https://www.instagram.com/arkadiusz.nojek/" target="_blank" rel="noopener" class="btn-round rv"><span class="circle"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>Zobacz na Instagramie</a>
-      </div>
-    </article>
-
-    <article class="row">
-      <div class="row-media rv"><img src="img/huracan.jpg" alt="Auto sportowe przed hotelem wieczorem" loading="lazy"></div>
-      <div class="row-text">
-        <span class="row-num rv">03</span>
-        <h3 class="rv">Premiery i eventy</h3>
-        <p class="rv">Relacja z premiery modelu, dnia otwartego w salonie czy zlotu. Zdjęcia i krótkie wideo jeszcze tego samego dnia.</p>
-        <a href="#kontakt" class="btn-round rv"><span class="circle"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>Zapytaj o termin</a>
-      </div>
-    </article>
-
-    <article class="row flip">
-      <div class="row-media rv"><img src="img/ferrari-tyl.jpg" alt="Tył czerwonego auta sportowego nocą" loading="lazy"></div>
-      <div class="row-text">
-        <span class="row-num rv">04</span>
-        <h3 class="rv">Tapety i materiały do druku</h3>
-        <p class="rv">Pliki w wysokiej rozdzielczości: tapety na telefon, plakaty, katalogi i materiały do salonu.</p>
-        <a href="#kontakt" class="btn-round rv"><span class="circle"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></span>Napisz</a>
-      </div>
-    </article>
-  </section>
-
-  <!-- PROCES -->
-  <section class="process" id="proces">
-    <div class="port-head">
-      <div>
-        <p class="label rv">Proces</p>
-        <h2 class="h-big rv">Jak pracujemy</h2>
-      </div>
-    </div>
-    <ol class="steps">
-      <li class="rv"><span>01</span><h3>Brief</h3><p>Rozmawiamy o aucie, marce i o tym, gdzie materiał ma trafić.</p></li>
-      <li class="rv"><span>02</span><h3>Lokacja i światło</h3><p>Dobieram miejsce, porę dnia i plan ujęć pod charakter auta.</p></li>
-      <li class="rv"><span>03</span><h3>Dzień zdjęciowy</h3><p>Zdjęcia i nagrania naraz, bez drugiej ekipy.</p></li>
-      <li class="rv"><span>04</span><h3>Obróbka i oddanie</h3><p>Kolor, montaż i pliki w formatach pod każdy kanał.</p></li>
+  </div>
+  <div class="wrap">
+    <ol class="kroki">
+      <li class="krok reveal"><span>01</span><h3>Brief</h3><p>Rozmawiamy o&nbsp;aucie, marce i&nbsp;o&nbsp;tym, gdzie materiał ma trafić.</p></li>
+      <li class="krok reveal"><span>02</span><h3>Lokacja i&nbsp;światło</h3><p>Dobieram miejsce, porę dnia i&nbsp;plan ujęć pod charakter auta.</p></li>
+      <li class="krok reveal"><span>03</span><h3>Dzień zdjęciowy</h3><p>Zdjęcia i&nbsp;nagrania naraz, bez drugiej ekipy.</p></li>
+      <li class="krok reveal"><span>04</span><h3>Obróbka</h3><p>Kolor, montaż i&nbsp;pliki w&nbsp;formatach pod każdy kanał.</p></li>
     </ol>
-  </section>
+  </div>
+</section>
 
-  <!-- KONTAKT -->
-  <section class="contact" id="kontakt">
-    <img class="contact-bg" src="img/reflektory-noc.jpg" alt="" loading="lazy">
-    <div class="contact-inner">
-      <p class="label rv">Kontakt</p>
-      <h2 class="h-contact rv">Masz auto, markę<br>albo premierę?</h2>
-      <a class="mail rv" href="mailto:anfotograf.info@gmail.com">anfotograf.info@gmail.com <svg viewBox="0 0 24 24"><path d="M6 18 18 6M8 6h10v10"/></svg></a>
+<!-- ===== KONTAKT ===== -->
+<section class="sekcja kontakt" id="kontakt">
+  <div class="wrap kontakt__siatka">
+    <div>
+      <p class="licznik reveal">006 <span>/ 006</span></p>
+      <h2 class="tytul reveal">Masz auto<br><span class="szary">albo markę?</span></h2>
+      <p class="wstep reveal">Sesja, rolki albo relacja z&nbsp;premiery. Napisz, co chcesz pokazać i&nbsp;gdzie materiał ma trafić, a&nbsp;odpiszę z&nbsp;propozycją.</p>
+      <a class="kontakt__mail reveal" href="mailto:anfotograf.info@gmail.com">anfotograf.info@gmail.com <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
 
-      <form class="form rv" novalidate>
+      <form class="formularz reveal" novalidate>
         <label><span>Imię</span><input name="imie" autocomplete="name" required></label>
         <label><span>Marka / auto</span><input name="auto"></label>
-        <label class="full"><span>Wiadomość</span><textarea name="tresc" rows="2" required></textarea></label>
-        <button class="btn-sq" type="submit">Wyślij zapytanie <svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></button>
-        <p class="form-note">Formularz otworzy Twoją pocztę z gotową wiadomością.</p>
+        <label class="cale"><span>Wiadomość</span><textarea name="tresc" rows="3" required></textarea></label>
+        <div class="formularz__dol">
+          <button class="btn" type="submit">Wyślij zapytanie <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></button>
+          <a class="btn btn--obrys" href="https://www.instagram.com/arkadiusz.nojek/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <p class="formularz__info">Formularz otworzy Twoją pocztę z&nbsp;gotową wiadomością.</p>
       </form>
     </div>
-  </section>
+    <figure class="kontakt__foto chrom-ramka reveal">
+      <img src="img/reflektory-noc.jpg" alt="Reflektory auta w ciemności" loading="lazy">
+      <span class="iskra" aria-hidden="true"></span>
+    </figure>
+  </div>
+</section>
+
 </main>
 
-<footer class="footer">
-  <p class="footer-mark" aria-hidden="true">Arkadiusz Nojek</p>
-  <div class="footer-row">
-    <span>© 2026 Arkadiusz Nojek · anfotograf</span>
-    <a href="https://www.instagram.com/arkadiusz.nojek/" target="_blank" rel="noopener">Instagram ↗</a>
+<footer class="stopka">
+  <div class="wrap stopka__rzad">
+    <a href="#top" class="nav__logo"><span class="znak">AN</span>ARKADIUSZ <span class="szary">NOJEK</span></a>
     <span>Koncept strony: Dawid Webdesign · zdjęcia poglądowe: Unsplash</span>
+    <span>© 2026</span>
   </div>
 </footer>
 
 <div class="lb" aria-hidden="true" role="dialog" aria-label="Podgląd zdjęcia">
-  <button class="lb-close" aria-label="Zamknij">✕</button>
-  <button class="lb-prev" aria-label="Poprzednie">←</button>
+  <button class="strzalka lb__x" aria-label="Zamknij"><svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
+  <button class="strzalka lb__wstecz" aria-label="Poprzednie"><svg viewBox="0 0 24 24"><path d="M14 7l-5 5 5 5"/></svg></button>
   <img alt="">
-  <button class="lb-next" aria-label="Następne">→</button>
-  <p class="lb-cap"></p>
+  <button class="strzalka lb__dalej" aria-label="Następne"><svg viewBox="0 0 24 24"><path d="M10 7l5 5-5 5"/></svg></button>
+  <p class="lb__opis"></p>
 </div>
 
 <script src="script.js"></script>
