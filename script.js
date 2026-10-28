@@ -76,6 +76,16 @@ addEventListener('scroll', () => {
   mono.style.setProperty('--z', p.toFixed(3));
 }, { passive: true });
 
+// ---------- rolki: filmy grają tylko, gdy są na ekranie ----------
+const ioWideo = new IntersectionObserver(wpisy => {
+  wpisy.forEach(w => {
+    const v = w.target;
+    if (w.isIntersecting && !reduce) { v.play().then(() => v.closest('.rolka').classList.add('gra')).catch(() => {}); }
+    else { v.pause(); }
+  });
+}, { threshold: 0.35 });
+document.querySelectorAll('.rolka video').forEach(v => ioWideo.observe(v));
+
 // ---------- taśma portfolio ----------
 const tasma = document.getElementById('tasma');
 const wstecz = document.getElementById('tasmaWstecz');

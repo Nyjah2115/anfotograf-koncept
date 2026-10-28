@@ -161,6 +161,34 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;paddin
 .mono__nr{font-size:12px;letter-spacing:.04em}
 .mono__nr span{color:var(--szary)}
 
+/* ---------- rolki z Instagrama ---------- */
+.rolki{padding-top:clamp(60px,8vw,110px)}
+.rolki__gora{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:28px}
+.rolki__rzad{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:18px;max-width:calc(var(--maks) + var(--gutter)*2);margin:0 auto;padding:0 var(--gutter)}
+.rolka{display:block}
+.rolka__ekran{position:relative;display:block;aspect-ratio:9/16;overflow:hidden;border:2px solid transparent;border-radius:22px;background:linear-gradient(var(--panel) 0 0) padding-box,var(--chrom) border-box;box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.rolka__ekran img,.rolka__ekran video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:20px;transition:transform 1.1s var(--ease)}
+.rolka:hover .rolka__ekran img,.rolka:hover .rolka__ekran video{transform:scale(1.04)}
+.rolka__ekran::after{content:"";position:absolute;inset:0;border-radius:20px;background:linear-gradient(0deg,rgba(0,0,0,.45),transparent 40%);pointer-events:none}
+.rolka__play{position:absolute;z-index:2;left:50%;top:50%;display:grid;place-items:center;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(0,0,0,.35);box-shadow:inset 0 0 0 1px rgba(255,255,255,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);transition:transform .5s var(--ease),background .3s,opacity .4s}
+.rolka__play svg{width:20px;height:20px;fill:#fff;margin-left:3px}
+.rolka:hover .rolka__play{transform:scale(1.1);background:rgba(255,255,255,.9)}
+.rolka:hover .rolka__play svg{fill:#000}
+.rolka.gra .rolka__play{opacity:0}
+.rolka.gra:hover .rolka__play{opacity:1}
+.rolka__opis{display:block;padding:16px 2px 0}
+.rolka__opis b{display:block;font-family:var(--szeroki);font-stretch:125%;font-weight:800;font-size:14px;text-transform:uppercase;line-height:1.2}
+.rolka__opis span{display:block;margin-top:5px;font-size:13px;color:var(--szary)}
+@media (max-width:1000px){
+  .rolki__rzad{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--gutter);scrollbar-width:none;padding-bottom:10px;overscroll-behavior-x:contain}
+  .rolki__rzad::-webkit-scrollbar{display:none}
+  .rolka{flex:0 0 clamp(200px,42vw,260px);scroll-snap-align:start}
+}
+@media (max-width:760px){
+  .rolki__gora{flex-direction:column;align-items:flex-start}
+  .rolka{flex-basis:62vw}
+}
+
 /* ---------- oferta ---------- */
 .panel{padding:12px}
 .uslugi{display:grid;grid-template-columns:repeat(4,1fr)}
