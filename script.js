@@ -1,35 +1,16 @@
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// wejście hero po załadowaniu pierwszego zdjęcia
-const pierwsze = document.querySelector('.hero__foto');
-const start = () => document.body.classList.add('gotowe');
-if (pierwsze.complete) setTimeout(start, 100);
-else { pierwsze.addEventListener('load', start); setTimeout(start, 1800); }
-
-// ---------- hero: kadry zmieniają się, pierścień DALEJ pokazuje czas ----------
-const fotki = [...document.querySelectorAll('.hero__foto')];
-const heroNr = document.getElementById('heroNr');
-const heroNazwa = document.getElementById('heroNazwa');
+// ---------- hero: rolka Lotec C1000 w tle, pierścień DALEJ pokazuje postęp filmu ----------
+const heroWideo = document.getElementById('heroWideo');
 const heroDalej = document.getElementById('heroDalej');
-const CZAS = 6500;
-let kadr = 0, uplynelo = 0, ostatnio = performance.now();
-function pokazKadr(i){
-  kadr = (i + fotki.length) % fotki.length;
-  uplynelo = 0;
-  fotki.forEach((f, k) => f.classList.toggle('aktywne', k === kadr));
-  heroNr.textContent = String(kadr + 1).padStart(3, '0');
-  heroNazwa.textContent = fotki[kadr].dataset.nazwa;
-}
-(function tik(teraz){
-  const dt = teraz - ostatnio; ostatnio = teraz;
-  if (!reduce && !document.hidden) {
-    uplynelo += dt;
-    if (uplynelo >= CZAS) pokazKadr(kadr + 1);
-  }
-  heroDalej.style.setProperty('--pk', Math.min(1, uplynelo / CZAS));
+const start = () => document.body.classList.add('gotowe');
+if (heroWideo.readyState >= 2) start();
+else { heroWideo.addEventListener('loadeddata', start, { once: true }); setTimeout(start, 1500); }
+if (reduce) heroWideo.pause();
+(function tik(){
+  if (heroWideo.duration) heroDalej.style.setProperty('--pk', (heroWideo.currentTime / heroWideo.duration).toFixed(4));
   requestAnimationFrame(tik);
-})(ostatnio);
-heroDalej.addEventListener('click', () => pokazKadr(kadr + 1));
+})();
 
 // ---------- nawigacja ----------
 const nav = document.getElementById('nav');

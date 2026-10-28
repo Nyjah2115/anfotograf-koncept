@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Inter:wght@400..600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="img/roma_0.jpg">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="preload" as="image" href="img/lotec-poster.jpg">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
@@ -52,12 +52,10 @@
 
 <!-- ===== HERO: monochrome, zdjęcia zmieniają się, nazwisko zostaje ===== -->
 <section class="hero" id="hero">
-  <div class="hero__zdjecia">
-    <img class="hero__foto aktywne" src="img/roma_0.jpg" alt="Ferrari Roma w ruchu na tle budynku" data-nazwa="Ferrari Roma" style="object-position:50% 62%">
-    <img class="hero__foto" src="img/huracan_0.jpg" alt="Lamborghini Huracán EVO przed wjazdem do garażu" data-nazwa="Huracán EVO" style="object-position:50% 64%" loading="lazy">
-    <img class="hero__foto" src="img/temerario_0.jpg" alt="Lamborghini Temerario przed budynkiem" data-nazwa="Temerario" style="object-position:50% 50%" loading="lazy">
-    <img class="hero__foto" src="img/cyber_0.jpg" alt="Tesla Cybertruck z zapalonymi światłami" data-nazwa="Cybertruck" style="object-position:50% 56%" loading="lazy">
-  </div>
+  <video class="hero__wideo" id="heroWideo" autoplay muted loop playsinline poster="img/lotec-poster.jpg" aria-label="Lotec C1000 na Ultrace 2026, fragment rolki Arkadiusza Nojka">
+    <source src="img/lotec-1080.mp4" type='video/mp4; codecs="vp09.00.40.08"'>
+    <source src="img/lotec-720.mp4" type="video/mp4">
+  </video>
 
   <div class="hero__srodek">
     <p class="etykieta wejscie">Premium Automotive Content · Warszawa</p>
@@ -67,10 +65,10 @@
 
   <div class="hero__dol wejscie">
     <a class="link-strzalka" href="#portfolio">Zobacz portfolio <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M14 7l5 5-5 5"/></svg></a>
-    <p class="hero__nr"><b id="heroNr">001</b> <span>/ 004</span> <em id="heroNazwa">Ferrari Roma</em></p>
-    <button class="dalej" id="heroDalej" type="button"><b>DALEJ</b><span>Następny kadr</span>
+    <p class="hero__nr"><b>Lotec C1000</b> <span>· Ultrace 2026</span></p>
+    <a class="dalej" id="heroDalej" href="#portfolio"><b>DALEJ</b><span>Portfolio</span>
       <span class="dalej__kolo"><svg class="dalej__pierscien" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22.5"/><circle class="postep" cx="24" cy="24" r="22.5"/></svg><svg class="dalej__grot" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 7l5 5-5 5"/></svg></span>
-    </button>
+    </a>
   </div>
 </section>
 
@@ -272,6 +270,6 @@
   <p class="lb__opis"></p>
 </div>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>
